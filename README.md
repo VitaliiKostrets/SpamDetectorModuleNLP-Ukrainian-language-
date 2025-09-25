@@ -53,7 +53,7 @@ pip install torch transformers
 
 ```python
 # test.py
-from spam_detector_module.detector import predict
+from SpamDetectorModuleNLP-Ukrainian-language.detector import predict
 ```
 # Текст, який потрібно перевірити
 ```python
