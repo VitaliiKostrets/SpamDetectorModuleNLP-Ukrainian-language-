@@ -60,8 +60,9 @@ from SpamDetectorModuleNLP-Ukrainian-language.detector import predict
 my_text = "Ви виграли приз! Терміново дзвоніть на номер +380991234567"
 ```
 # Викликаємо функцію predict
+```python
 label, probability = predict(my_text)
-
+```
 # Виводимо результат
 ```python
 if label == 1:
