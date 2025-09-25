@@ -39,3 +39,42 @@ SpamDetectorModuleNLP-Ukrainian-language/
     ├── tokenizer.json
     ├── tokenizer_config.json
     └── vocab.txt
+```
+### 3. Встановіть залежності
+
+Переконайтесь, що у вас встановлені `torch` та `transformers`.
+
+```bash
+pip install torch transformers
+```
+### 4. Приклад використання 
+
+Створіть Python-файл (наприклад, `test.py`) **поруч із папкою вашого модуля** (`spam_detector_module`) та додайте цей код:
+
+```python
+# test.py
+from spam_detector_module.detector import predict
+```
+# Текст, який потрібно перевірити
+```python
+my_text = "Ви виграли приз! Терміново дзвоніть на номер +380991234567"
+```
+# Викликаємо функцію predict
+label, probability = predict(my_text)
+
+# Виводимо результат
+```python
+if label == 1:
+    print(f"Це СПАМ (Ймовірність: {probability:.2%})")
+else:
+    print(f"Це НЕ СПАМ (Ймовірність спаму: {probability:.2%})")
+```
+### Як це працює
+
+* Функція `predict(raw_text, threshold=0.5)` приймає:
+    * `raw_text` (str): Текст для перевірки.
+    * `threshold` (float, опціонально): Поріг для класифікації (за замовчуванням `0.5`).
+
+* Вона повертає кортеж `(label, probability)`:
+    * `label` (int): `1` для спаму, `0` для не-спаму.
+    * `probability` (float): Ймовірність того, що текст є спамом (від 0.0 до 1.0).
